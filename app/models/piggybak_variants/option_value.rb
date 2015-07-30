@@ -1,6 +1,6 @@
 module PiggybakVariants
   class OptionValue < ActiveRecord::Base
-    has_and_belongs_to_many :variants
+    has_and_belongs_to_many :variants, :class_name => "::PiggybakVariants::Variant"
     belongs_to :option, :inverse_of => :option_values
 
     scope :hash_ordered, -> { includes(:option).order("piggybak_variants_options.position ASC, piggybak_variants_option_values.position ASC") }
